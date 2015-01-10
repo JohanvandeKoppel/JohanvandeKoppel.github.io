@@ -1,1 +1,93 @@
-Hellow World
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Modelling ecological self-organization by JohanvandeKoppel</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Modelling ecological self-organization</h1>
+        <h2>Simulating large-scale spatial models using GPUs</h2>
+        <a href="https://github.com/JohanvandeKoppel" class="button"><small>Follow me on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+<a id="from-cuda-to-opencl" class="anchor" href="#from-cuda-to-opencl" aria-hidden="true"><span class="octicon octicon-link"></span></a>From CUDA to OpenCL</h3>
+
+<p>I have in the past years been implementing my models on the graphics processors (GPUs) that sit in many computers. These processors are much better suited to run spatially-explicit models than is the computer's main processor (CPU). I have been using NVidia's CUDA in the past, as I explained in the paper:</p>
+
+<p><code>Johan van de Koppel, Rohit Gupta, and Cornelis Vuik. "Scaling-up spatially-explicit ecological models using graphics processors." Ecological Modelling 222.17 (2011): 3011-3019.
+</code></p>
+
+<p>In the past year, I have been switching from CUDA to OpenCL. The reason is that OpenCL can more generally be used on many graphics cards, while CUDA is proprietary and works only on (expensive) NVidia cards.</p>
+
+<p>On my GitHub website, I provide OpenCL codes for the models that I or my students have published in the past years. </p>
+
+<h3>
+<a id="implementing-the-models" class="anchor" href="#implementing-the-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementing the models</h3>
+
+<p>Running the codes requires an OpenCL-compatible graphics card and OpenCL drivers installed. On a Mac, this is natively done when Xcode has been installed, and the current code has been developed in Xcode using a Macbook pro 2012 edition. You can also compile and run the codes from the command line on a Mac. I run it using the cmake package (<a href="http://www.cmake.org">www.cmake.org</a>) that handles the generation of a suitable makefile. See further explanation below.</p>
+
+<p>If you run under Windows with a computer that has an Nvidia card, you have to install CUDA (which has OpenCL integrated) including SDK and the OpenCL samples within Visual Studio, and integrate the code files within a Visual studio project. The simplest way to do that is to copy one of the code samples into a new folder within the samples folder, and use an existing sample project file by replacing the code files. I cannot help you with this as I am a Mac user (I actually switched to Mac to avoid the visual studio headache, so be warned).</p>
+
+<p>For Mac or Linux users: Presuming that cmake is installed, you have to download the FindOpenCL.cmake file and put it two folders down from the current code (e.g., in a general, common folder to be used for all repository codes). If you don't want to put it in that location, than change the following line in each of the CMakeLists.txt files:</p>
+
+<pre><code>set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../..")
+</code></pre>
+
+<p>So that it points to the right folder. The <code>FindOpenCL.cmake</code> file can be downloaded from the "General instructions repository".</p>
+
+<p>Then, unzip the file somewhere, and open a command window in the build folder within the unzipped code folder. Now, run:</p>
+
+<pre><code>$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ make run
+</code></pre>
+
+<p>If you want to clear the build, type</p>
+
+<pre><code>make destroy
+</code></pre>
+
+<p>which cleans the build folder.</p>
+
+<p>The code itself does not show anything except for a counter. To view the results, you have to use the R-project file <code>Plot*.r</code> (using R and RStudio I advice) or <code>Plot*.m</code> within Matlab. Note to set the folder settings correctly and to install the “fields” package within R (type <code>install.package(“fields”)</code> in R or RStudio)</p>
+
+<p>Both scripts can make a movie. The R script is best for that, but you have to install the ffmpeg program, which you can find here: <a href="https://www.ffmpeg.org/">https://www.ffmpeg.org/</a> </p>
+
+<h3>
+<a id="and-finally" class="anchor" href="#and-finally" aria-hidden="true"><span class="octicon octicon-link"></span></a>And finally</h3>
+
+<p>I hope the code it useful for you. Please drop me an email if you like to tell whether it worked for you or not.</p>
+        </section>
+
+        <aside id="sidebar">
+
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
