@@ -20,7 +20,7 @@
     <header>
       <div class="inner">
         <h1>Modelling ecological self-organization</h1>
-        <h2>Simulating large-scale spatial models using GPUs</h2>
+        <h2>Simulating spatial models using GPUs</h2>
         <a href="https://github.com/JohanvandeKoppel" class="button"><small>Follow me on</small> GitHub</a>
       </div>
     </header>
@@ -43,15 +43,11 @@
 <h3>
 <a id="implementing-the-models" class="anchor" href="#implementing-the-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementing the models</h3>
 
-<p>Running the codes requires an OpenCL-compatible graphics card and OpenCL drivers installed. On a Mac, this is natively done when Xcode has been installed, and the current code has been developed in Xcode using a <b>Macbook pro 2012 edition</b>. I must emphasize, Xcode is great for GPU programming in OpenCL, nothing beats it. You can also compile and run the codes from the command line on a Mac. I run it using the cmake package (<a href="http://www.cmake.org">www.cmake.org</a>) that handles the generation of a suitable makefile. See further explanation below.</p>
+<p>Running the codes requires an OpenCL-compatible graphics card and OpenCL drivers installed. On a Mac, this is natively done when Xcode has been installed, and the current code has been developed in Xcode using a Macbook pro 2012 edition. You can also compile and run the codes from the command line on a Mac. I run it using the cmake package (<a href="http://www.cmake.org">www.cmake.org</a>) that handles the generation of a suitable makefile. See further explanation below.</p>
 
-<h3>
-<a id="implementing-the-models" class="anchor" href="#Linux users" aria-hidden="true"><span class="octicon octicon-link"></span></a>Microsoft Office using Visual Studio</h3>
 <p>If you run under Windows with a computer that has an Nvidia card, you have to install CUDA (which has OpenCL integrated) including SDK and the OpenCL samples within Visual Studio, and integrate the code files within a Visual studio project. The simplest way to do that is to copy one of the code samples into a new folder within the samples folder, and use an existing sample project file by replacing the code files. I cannot help you with this as I am a Mac user (I actually switched to Mac to avoid the visual studio headache, so be warned).</p>
 
-<h3>
-<a id="implementing-the-models" class="anchor" href="#Linux users" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementing the models</h3>
-Presuming that cmake is installed, you have to download the FindOpenCL.cmake file and put it two folders down from the current code (e.g., in a general, common folder to be used for all repository codes). If you don't want to put it in that location, than change the following line in each of the CMakeLists.txt files:</p>
+<p>For Mac or Linux users: Presuming that cmake is installed, you have to download the FindOpenCL.cmake file and put it two folders down from the current code (e.g., in a general, common folder to be used for all repository codes). If you don't want to put it in that location, than change the following line in each of the CMakeLists.txt files:</p>
 
 <pre><code>set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/../..")
 </code></pre>
